@@ -1,0 +1,31 @@
+{
+  "name": "ui-library-vue",
+  "version": "1.0.0",
+  "description": "Vue wrapper components for ui-library web components",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "*.d.ts",
+    "index.js"
+  ],
+  "dependencies": {
+    "vue": "^3.0.0"
+  },
+  "peerDependencies": {
+    "ui-library": "*",
+    "vue": "^3.0.0"
+  },
+  "keywords": [
+    "ui-library",
+    "vue",
+    "typescript",
+    "web-components",
+    "vue3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/ui-library-vue.git"
+  }
+}

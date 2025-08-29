@@ -1,0 +1,29 @@
+{
+  "name": "ui-library-angular",
+  "version": "1.0.0",
+  "description": "Angular wrapper components for ui-library web components",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "*.d.ts",
+    "index.js"
+  ],
+  "peerDependencies": {
+    "ui-library": "*",
+    "@angular/core": ">=15.0.0",
+    "@angular/common": ">=15.0.0"
+  },
+  "keywords": [
+    "ui-library",
+    "angular",
+    "typescript",
+    "web-components",
+    "angular15+"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-org/ui-library-angular.git"
+  }
+}

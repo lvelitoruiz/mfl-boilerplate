@@ -1,0 +1,75 @@
+<div style="background-color: #282c34; padding: 1rem;">
+  <a routerLink="/" style="margin-right: 1rem; padding: 0.5rem 1rem; color: white; text-decoration: none; border: 1px solid #61dafb; background-color: #61dafb; color: #282c34;">UI Library Test</a>
+  <a routerLink="/original" style="padding: 0.5rem 1rem; color: white; text-decoration: none; border: 1px solid #61dafb;">Original Page</a>
+</div>
+
+<div class="component-test" style="padding: 2rem; font-family: sans-serif; background-color: #f5f5f5; min-height: 100vh;">
+  <h1>UI Library Angular Test</h1>
+  
+  <div style="margin-bottom: 2rem;">
+    <h2>Buttons</h2>
+    <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+      <ui-button variant="primary" (click)="handleButtonClick()">
+        Primary
+      </ui-button>
+      <ui-button variant="secondary">
+        Secondary
+      </ui-button>
+      <ui-button variant="outline">
+        Outline
+      </ui-button>
+      <ui-button variant="ghost">
+        Ghost
+      </ui-button>
+      <ui-button variant="destructive">
+        Destructive
+      </ui-button>
+    </div>
+    
+    <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+      <ui-button size="sm">Small</ui-button>
+      <ui-button size="md">Medium</ui-button>
+      <ui-button size="lg">Large</ui-button>
+    </div>
+    
+    <div style="display: flex; gap: 1rem;">
+      <ui-button [loading]="loading">
+        {{ loading ? 'Loading...' : 'Click to Load' }}
+      </ui-button>
+      <ui-button disabled="true">Disabled</ui-button>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 2rem; max-width: 400px;">
+    <h2>Card</h2>
+    <ui-card>
+      <ui-card-header>
+        <ui-card-title>Angular Integration Test</ui-card-title>
+      </ui-card-header>
+      <ui-card-content>
+        <p>This card component is working perfectly in Angular!</p>
+        <p>Input value: {{ inputValue || 'No input yet' }}</p>
+      </ui-card-content>
+    </ui-card>
+  </div>
+
+  <div style="max-width: 300px;">
+    <h2>Input</h2>
+    <ui-input 
+      label="Test Input"
+      placeholder="Type something..."
+      (uiInput)="handleInputChange($event)"
+      [value]="inputValue">
+    </ui-input>
+    
+    <br><br>
+    
+    <ui-input 
+      label="Required Input"
+      placeholder="This is required"
+      required="true"
+      [error]="!inputValue && inputValue !== ''"
+      [errorMessage]="!inputValue && inputValue !== '' ? 'This field is required' : ''">
+    </ui-input>
+  </div>
+</div>
