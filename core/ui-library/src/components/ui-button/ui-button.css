@@ -1,0 +1,45 @@
+:host {
+  display: inline-block;
+}
+
+button {
+  @apply inline-flex items-center justify-center rounded-md font-medium transition-colors;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2;
+  @apply disabled:pointer-events-none disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+}
+
+.btn-outline {
+  @apply border border-gray-300 bg-white hover:bg-gray-50 text-gray-700;
+}
+
+.btn-ghost {
+  @apply hover:bg-gray-100 text-gray-700;
+}
+
+.btn-destructive {
+  @apply bg-red-600 text-white hover:bg-red-700;
+}
+
+.btn-sm {
+  @apply h-9 px-3 text-sm;
+}
+
+.btn-md {
+  @apply h-10 px-4 py-2;
+}
+
+.btn-lg {
+  @apply h-11 px-8 text-base;
+}
+
+.spinner {
+  @apply mr-2 h-4 w-4 animate-spin;
+}
