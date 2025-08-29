@@ -8,11 +8,14 @@
     "*.d.ts",
     "index.js"
   ],
-  "dependencies": {
-    "@types/react": "*"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "ui-library": "*"
+    "ui-library": "*",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "*"
   },
   "keywords": [
     "ui-library",
