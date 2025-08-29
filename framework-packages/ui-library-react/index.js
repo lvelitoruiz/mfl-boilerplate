@@ -1,14 +1,19 @@
-import React, { forwardRef, useEffect } from 'react';
-import { defineCustomElements as defineElements } from 'ui-library/loader';
+import React, { forwardRef } from 'react';
+import { defineCustomElements as defineElements } from '../../core/ui-library/dist/esm/loader.js';
 
-// Initialize web components
+// Initialize web components once globally
 let componentsInitialized = false;
 const initializeComponents = () => {
-  if (!componentsInitialized) {
-    defineElements();
+  if (typeof window !== 'undefined' && !componentsInitialized) {
+    defineElements(window);
     componentsInitialized = true;
   }
 };
+
+// Initialize immediately if window is available
+if (typeof window !== 'undefined') {
+  initializeComponents();
+}
 
 // Helper function to convert React props to web component attributes
 const convertProps = (props) => {
@@ -33,55 +38,31 @@ const convertProps = (props) => {
 
 // React wrapper components
 export const UiButton = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-button', { ...webComponentProps, ref }, props.children);
 });
 
 export const UiCard = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-card', { ...webComponentProps, ref }, props.children);
 });
 
 export const UiCardHeader = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-card-header', { ...webComponentProps, ref }, props.children);
 });
 
 export const UiCardTitle = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-card-title', { ...webComponentProps, ref }, props.children);
 });
 
 export const UiCardContent = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-card-content', { ...webComponentProps, ref }, props.children);
 });
 
 export const UiInput = forwardRef((props, ref) => {
-  useEffect(() => {
-    initializeComponents();
-  }, []);
-
   const webComponentProps = convertProps(props);
   return React.createElement('ui-input', { ...webComponentProps, ref });
 });

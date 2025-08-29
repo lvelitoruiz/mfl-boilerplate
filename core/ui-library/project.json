@@ -1,0 +1,40 @@
+{
+  "name": "ui-library",
+  "sourceRoot": "core/ui-library/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "stencil build",
+        "cwd": "core/ui-library"
+      },
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/loader"
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "stencil build --dev --watch --serve",
+        "cwd": "core/ui-library"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "stencil test --spec --e2e",
+        "cwd": "core/ui-library"
+      }
+    },
+    "generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "stencil generate",
+        "cwd": "core/ui-library"
+      }
+    }
+  },
+  "tags": ["type:library", "scope:core"]
+}
