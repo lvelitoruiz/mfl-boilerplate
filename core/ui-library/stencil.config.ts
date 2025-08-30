@@ -16,6 +16,23 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '**/*.css',
+          dest: '../test-apps/react-test-new/public/ui-library',
+          warn: true
+        },
+        {
+          src: '**/*.css',
+          dest: '../test-apps/angular-test/public/ui-library',  
+          warn: true
+        },
+        {
+          src: '**/*.css',
+          dest: '../test-apps/vue-test/public/ui-library',
+          warn: true
+        }
+      ]
     },
     {
       type: 'dist-custom-elements',
