@@ -7,7 +7,8 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ui-library/ui-library.esm.js",
+  "unpkg": "dist/cdn/ui-library.min.js",
+  "jsdelivr": "dist/cdn/ui-library.min.js",
   "exports": {
     ".": {
       "import": "./dist/ui-library/ui-library.esm.js",
@@ -67,6 +68,10 @@
     },
     "./jsx": {
       "types": "./dist/types/jsx.d.ts"
+    },
+    "./cdn": {
+      "import": "./dist/cdn/ui-library.js",
+      "browser": "./dist/cdn/ui-library.min.js"
     }
   },
   "repository": {
@@ -79,12 +84,14 @@
   ],
   "scripts": {
     "build": "stencil build",
+    "build:cdn": "stencil build && rollup -c rollup.cdn.config.js",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.4",
     "@stencil-community/postcss": "^2.2.0",
     "@stencil/angular-output-target": "^1.1.1",
     "@stencil/core": "^4.27.1",

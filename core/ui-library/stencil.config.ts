@@ -22,6 +22,16 @@ export const config: Config = {
       customElementsExportBehavior: 'auto-define-custom-elements',
       externalRuntime: false,
     },
+    // CDN Bundle for script tag usage
+    {
+      type: 'dist-custom-elements',
+      dir: 'dist/cdn',
+      customElementsExportBehavior: 'single-export-module',
+      generateTypeDeclarations: false,
+      externalRuntime: false,
+      includeGlobalScripts: true,
+      minify: true,
+    },
     reactOutputTarget({
       componentCorePackage: 'ui-library',
       proxiesFile: './dist/react/index.ts',
