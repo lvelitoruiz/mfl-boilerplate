@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/web-components';
-import '../src/global/app.css';
+import '../src/tokens/design-tokens.css';
 
 // Initialize web components when they become available
 let componentsInitialized = false;

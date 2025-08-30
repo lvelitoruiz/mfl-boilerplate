@@ -11,25 +11,16 @@
 export { format } from './utils/utils';
 export type * from './components.d.ts';
 
-// Export component types
-export type { ButtonVariant, ButtonSize } from './components/ui-button/ui-button';
-export type { InputType } from './components/ui-input/ui-input';
+// Export component types will be added as components are implemented
 
-// Export design tokens
-export { designTokens } from './tokens/design-tokens';
-export type { DesignTokens, ColorPalette, TypographyScale, SpacingScale, BreakpointScale } from './tokens/design-tokens';
+// Export design tokens - types available but JS exports commented until needed
+// export { designTokens } from './tokens/design-tokens';
+// export type { DesignTokens, ColorPalette, TypographyScale, SpacingScale, BreakpointScale } from './tokens/design-tokens';
 
-// Export component interfaces
-export type {
-  ComponentBaseProps,
-  ButtonProps,
-  InputProps,
-  CardProps,
-  UiInputEvent,
-  UiFocusEvent,
-  UiBlurEvent,
-  ComponentEventMap,
-} from './types/component-interfaces';
+// Export component interfaces - will be added as components are implemented
+// export type {
+//   ComponentBaseProps,
+// } from './types/component-interfaces';
 
 // Export the custom loader for framework integrations
 export { defineCustomElements } from './loader/custom-loader';
