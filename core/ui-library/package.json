@@ -7,7 +7,8 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ui-library/ui-library.esm.js",
+  "unpkg": "dist/cdn/ui-library.min.js",
+  "jsdelivr": "dist/cdn/ui-library.min.js",
   "exports": {
     ".": {
       "import": "./dist/ui-library/ui-library.esm.js",
@@ -67,6 +68,10 @@
     },
     "./jsx": {
       "types": "./dist/types/jsx.d.ts"
+    },
+    "./cdn": {
+      "import": "./dist/cdn/ui-library.js",
+      "browser": "./dist/cdn/ui-library.min.js"
     }
   },
   "repository": {
@@ -78,18 +83,26 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build",
+    "build": "stencil build && node scripts/post-build.js",
+    "build:cdn": "stencil build && rollup -c rollup.cdn.config.js && node scripts/post-build.js",
     "start": "stencil build --dev --watch --serve",
+    "poststart": "node scripts/post-build.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.4",
     "@stencil-community/postcss": "^2.2.0",
     "@stencil/angular-output-target": "^1.1.1",
     "@stencil/core": "^4.27.1",
     "@stencil/react-output-target": "^1.2.0",
     "@stencil/vue-output-target": "^0.11.8",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/web-components-vite": "^8.6.14",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.5",
     "autoprefixer": "^10.4.21",

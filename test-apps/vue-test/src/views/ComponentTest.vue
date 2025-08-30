@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { defineCustomElements } from 'ui-library/loader'
+// Components loaded dynamically via main.ts
 
 // Define the components for better TypeScript support
 declare module 'vue' {
@@ -18,10 +18,7 @@ declare module 'vue' {
 const inputValue = ref('')
 const loading = ref(false)
 
-// Initialize web components
-onMounted(() => {
-  defineCustomElements()
-})
+// Components are initialized automatically via main.ts
 
 // Event handlers
 const handleButtonClick = () => {

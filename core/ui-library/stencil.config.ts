@@ -16,11 +16,38 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '**/*.css',
+          dest: '../test-apps/react-test-new/public/ui-library',
+          warn: true
+        },
+        {
+          src: '**/*.css',
+          dest: '../test-apps/angular-test/public/ui-library',  
+          warn: true
+        },
+        {
+          src: '**/*.css',
+          dest: '../test-apps/vue-test/public/ui-library',
+          warn: true
+        }
+      ]
     },
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'auto-define-custom-elements',
       externalRuntime: false,
+    },
+    // CDN Bundle for script tag usage
+    {
+      type: 'dist-custom-elements',
+      dir: 'dist/cdn',
+      customElementsExportBehavior: 'single-export-module',
+      generateTypeDeclarations: false,
+      externalRuntime: false,
+      includeGlobalScripts: true,
+      minify: true,
     },
     reactOutputTarget({
       componentCorePackage: 'ui-library',
