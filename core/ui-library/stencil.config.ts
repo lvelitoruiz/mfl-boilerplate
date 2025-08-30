@@ -1,17 +1,17 @@
 import { Config } from '@stencil/core';
-import { postcss } from '@stencil-community/postcss';
+// import { postcss } from '@stencil-community/postcss';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 
 export const config: Config = {
   namespace: 'ui-library',
-  globalStyle: 'src/global/app.css',
-  plugins: [
-    postcss({
-      plugins: [require('tailwindcss'), require('autoprefixer')],
-    }),
-  ],
+  globalStyle: 'src/tokens/design-tokens.css',
+  // plugins: [
+  //   postcss({
+  //     plugins: [require('tailwindcss'), require('autoprefixer')],
+  //   }),
+  // ],
   outputTargets: [
     {
       type: 'dist',
@@ -73,6 +73,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null,
+      dir: 'www',
     },
   ],
   testing: {

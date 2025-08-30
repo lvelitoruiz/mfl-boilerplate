@@ -5,10 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonSize, ButtonVariant } from "./components/ui-button/ui-button";
-import { InputType } from "./components/ui-input/ui-input";
-export { ButtonSize, ButtonVariant } from "./components/ui-button/ui-button";
-export { InputType } from "./components/ui-input/ui-input";
+import { OrderIdCellProps } from "./components/molecules/order-id-cell/order-id-cell";
+import { StatusBadgeProps } from "./components/atoms/status-badge/status-badge";
+import { StatusIconProps } from "./components/atoms/status-icon/status-icon";
+import { AvatarProps } from "./components/atoms/avatar/avatar";
+import { IconProps } from "./components/atoms/icon/icon";
+import { TextProps } from "./components/atoms/text/text";
+export { OrderIdCellProps } from "./components/molecules/order-id-cell/order-id-cell";
+export { StatusBadgeProps } from "./components/atoms/status-badge/status-badge";
+export { StatusIconProps } from "./components/atoms/status-icon/status-icon";
+export { AvatarProps } from "./components/atoms/avatar/avatar";
+export { IconProps } from "./components/atoms/icon/icon";
+export { TextProps } from "./components/atoms/text/text";
 export namespace Components {
     interface MyComponent {
         /**
@@ -24,113 +32,84 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface UiButton {
+    interface OrderIdCell {
         /**
-          * ARIA described by for additional context
+          * @default ''
          */
-        "ariaDescribedby": string;
+        "date": string;
+        "onClick"?: (orderId: string) => void;
         /**
-          * ARIA label for accessibility
+          * @default ''
          */
-        "ariaLabel": string;
+        "orderId": string;
         /**
-          * Disabled state
-          * @default false
+          * @default 'open'
          */
-        "disabled": boolean;
+        "status": OrderIdCellProps['status'];
         /**
-          * Loading state
-          * @default false
+          * @default ''
          */
-        "loading": boolean;
+        "time": string;
+    }
+    interface StatusBadge {
         /**
-          * Button size
           * @default 'md'
          */
-        "size": ButtonSize;
+        "size": StatusBadgeProps['size'];
         /**
-          * Button type
-          * @default 'button'
+          * @default 'none'
          */
-        "type": 'button' | 'submit' | 'reset';
+        "variant": StatusBadgeProps['variant'];
+    }
+    interface StatusIcon {
         /**
-          * Button variant style
-          * @default 'primary'
+          * @default 'md'
          */
-        "variant": ButtonVariant;
-    }
-    interface UiCard {
+        "size": StatusIconProps['size'];
         /**
-          * ARIA label for the card
+          * @default 'pending'
          */
-        "ariaLabel": string;
+        "status": StatusIconProps['status'];
+    }
+    interface UiAvatar {
         /**
-          * ARIA labelledby reference
+          * @default ''
          */
-        "ariaLabelledby": string;
-    }
-    interface UiCardContent {
-    }
-    interface UiCardHeader {
-    }
-    interface UiCardTitle {
-    }
-    interface UiInput {
+        "alt"?: string;
         /**
-          * Disabled state
+          * @default 'initials'
+         */
+        "fallback": AvatarProps['fallback'];
+        "initials"?: string;
+        /**
+          * @default 'md'
+         */
+        "size": AvatarProps['size'];
+        "src"?: string;
+    }
+    interface UiIcon {
+        "color"?: string;
+        /**
+          * @default 'user'
+         */
+        "name": IconProps['name'];
+        /**
+          * @default 'md'
+         */
+        "size": IconProps['size'];
+    }
+    interface UiText {
+        "color"?: TextProps['color'];
+        /**
           * @default false
          */
-        "disabled": boolean;
+        "truncate"?: boolean;
         /**
-          * Error state
-          * @default false
+          * @default 'body'
          */
-        "error": boolean;
-        /**
-          * Error message
-          * @default ''
-         */
-        "errorMessage": string;
-        /**
-          * Input ID
-          * @default ''
-         */
-        "inputId": string;
-        /**
-          * Label text
-          * @default ''
-         */
-        "label": string;
-        /**
-          * Input name
-          * @default ''
-         */
-        "name": string;
-        /**
-          * Placeholder text
-          * @default ''
-         */
-        "placeholder": string;
-        /**
-          * Required field
-          * @default false
-         */
-        "required": boolean;
-        /**
-          * Input type
-          * @default 'text'
-         */
-        "type": InputType;
-        /**
-          * Input value
-          * @default ''
-         */
-        "value": string;
+        "variant": TextProps['variant'];
+        "weight"?: TextProps['weight'];
     }
-}
-export interface UiInputCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLUiInputElement;
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -139,63 +118,50 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLUiButtonElement extends Components.UiButton, HTMLStencilElement {
+    interface HTMLOrderIdCellElement extends Components.OrderIdCell, HTMLStencilElement {
     }
-    var HTMLUiButtonElement: {
-        prototype: HTMLUiButtonElement;
-        new (): HTMLUiButtonElement;
+    var HTMLOrderIdCellElement: {
+        prototype: HTMLOrderIdCellElement;
+        new (): HTMLOrderIdCellElement;
     };
-    interface HTMLUiCardElement extends Components.UiCard, HTMLStencilElement {
+    interface HTMLStatusBadgeElement extends Components.StatusBadge, HTMLStencilElement {
     }
-    var HTMLUiCardElement: {
-        prototype: HTMLUiCardElement;
-        new (): HTMLUiCardElement;
+    var HTMLStatusBadgeElement: {
+        prototype: HTMLStatusBadgeElement;
+        new (): HTMLStatusBadgeElement;
     };
-    interface HTMLUiCardContentElement extends Components.UiCardContent, HTMLStencilElement {
+    interface HTMLStatusIconElement extends Components.StatusIcon, HTMLStencilElement {
     }
-    var HTMLUiCardContentElement: {
-        prototype: HTMLUiCardContentElement;
-        new (): HTMLUiCardContentElement;
+    var HTMLStatusIconElement: {
+        prototype: HTMLStatusIconElement;
+        new (): HTMLStatusIconElement;
     };
-    interface HTMLUiCardHeaderElement extends Components.UiCardHeader, HTMLStencilElement {
+    interface HTMLUiAvatarElement extends Components.UiAvatar, HTMLStencilElement {
     }
-    var HTMLUiCardHeaderElement: {
-        prototype: HTMLUiCardHeaderElement;
-        new (): HTMLUiCardHeaderElement;
+    var HTMLUiAvatarElement: {
+        prototype: HTMLUiAvatarElement;
+        new (): HTMLUiAvatarElement;
     };
-    interface HTMLUiCardTitleElement extends Components.UiCardTitle, HTMLStencilElement {
+    interface HTMLUiIconElement extends Components.UiIcon, HTMLStencilElement {
     }
-    var HTMLUiCardTitleElement: {
-        prototype: HTMLUiCardTitleElement;
-        new (): HTMLUiCardTitleElement;
+    var HTMLUiIconElement: {
+        prototype: HTMLUiIconElement;
+        new (): HTMLUiIconElement;
     };
-    interface HTMLUiInputElementEventMap {
-        "uiInput": string;
-        "uiBlur": void;
-        "uiFocus": void;
+    interface HTMLUiTextElement extends Components.UiText, HTMLStencilElement {
     }
-    interface HTMLUiInputElement extends Components.UiInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLUiInputElement: {
-        prototype: HTMLUiInputElement;
-        new (): HTMLUiInputElement;
+    var HTMLUiTextElement: {
+        prototype: HTMLUiTextElement;
+        new (): HTMLUiTextElement;
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
-        "ui-button": HTMLUiButtonElement;
-        "ui-card": HTMLUiCardElement;
-        "ui-card-content": HTMLUiCardContentElement;
-        "ui-card-header": HTMLUiCardHeaderElement;
-        "ui-card-title": HTMLUiCardTitleElement;
-        "ui-input": HTMLUiInputElement;
+        "order-id-cell": HTMLOrderIdCellElement;
+        "status-badge": HTMLStatusBadgeElement;
+        "status-icon": HTMLStatusIconElement;
+        "ui-avatar": HTMLUiAvatarElement;
+        "ui-icon": HTMLUiIconElement;
+        "ui-text": HTMLUiTextElement;
     }
 }
 declare namespace LocalJSX {
@@ -213,129 +179,92 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface UiButton {
+    interface OrderIdCell {
         /**
-          * ARIA described by for additional context
+          * @default ''
          */
-        "ariaDescribedby"?: string;
+        "date"?: string;
+        "onClick"?: (orderId: string) => void;
         /**
-          * ARIA label for accessibility
+          * @default ''
          */
-        "ariaLabel"?: string;
+        "orderId"?: string;
         /**
-          * Disabled state
-          * @default false
+          * @default 'open'
          */
-        "disabled"?: boolean;
+        "status"?: OrderIdCellProps['status'];
         /**
-          * Loading state
-          * @default false
+          * @default ''
          */
-        "loading"?: boolean;
+        "time"?: string;
+    }
+    interface StatusBadge {
         /**
-          * Button size
           * @default 'md'
          */
-        "size"?: ButtonSize;
+        "size"?: StatusBadgeProps['size'];
         /**
-          * Button type
-          * @default 'button'
+          * @default 'none'
          */
-        "type"?: 'button' | 'submit' | 'reset';
+        "variant"?: StatusBadgeProps['variant'];
+    }
+    interface StatusIcon {
         /**
-          * Button variant style
-          * @default 'primary'
+          * @default 'md'
          */
-        "variant"?: ButtonVariant;
-    }
-    interface UiCard {
+        "size"?: StatusIconProps['size'];
         /**
-          * ARIA label for the card
+          * @default 'pending'
          */
-        "ariaLabel"?: string;
+        "status"?: StatusIconProps['status'];
+    }
+    interface UiAvatar {
         /**
-          * ARIA labelledby reference
+          * @default ''
          */
-        "ariaLabelledby"?: string;
-    }
-    interface UiCardContent {
-    }
-    interface UiCardHeader {
-    }
-    interface UiCardTitle {
-    }
-    interface UiInput {
+        "alt"?: string;
         /**
-          * Disabled state
+          * @default 'initials'
+         */
+        "fallback"?: AvatarProps['fallback'];
+        "initials"?: string;
+        /**
+          * @default 'md'
+         */
+        "size"?: AvatarProps['size'];
+        "src"?: string;
+    }
+    interface UiIcon {
+        "color"?: string;
+        /**
+          * @default 'user'
+         */
+        "name"?: IconProps['name'];
+        /**
+          * @default 'md'
+         */
+        "size"?: IconProps['size'];
+    }
+    interface UiText {
+        "color"?: TextProps['color'];
+        /**
           * @default false
          */
-        "disabled"?: boolean;
+        "truncate"?: boolean;
         /**
-          * Error state
-          * @default false
+          * @default 'body'
          */
-        "error"?: boolean;
-        /**
-          * Error message
-          * @default ''
-         */
-        "errorMessage"?: string;
-        /**
-          * Input ID
-          * @default ''
-         */
-        "inputId"?: string;
-        /**
-          * Label text
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * Input name
-          * @default ''
-         */
-        "name"?: string;
-        /**
-          * Input blur event
-         */
-        "onUiBlur"?: (event: UiInputCustomEvent<void>) => void;
-        /**
-          * Input focus event
-         */
-        "onUiFocus"?: (event: UiInputCustomEvent<void>) => void;
-        /**
-          * Input change event
-         */
-        "onUiInput"?: (event: UiInputCustomEvent<string>) => void;
-        /**
-          * Placeholder text
-          * @default ''
-         */
-        "placeholder"?: string;
-        /**
-          * Required field
-          * @default false
-         */
-        "required"?: boolean;
-        /**
-          * Input type
-          * @default 'text'
-         */
-        "type"?: InputType;
-        /**
-          * Input value
-          * @default ''
-         */
-        "value"?: string;
+        "variant"?: TextProps['variant'];
+        "weight"?: TextProps['weight'];
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
-        "ui-button": UiButton;
-        "ui-card": UiCard;
-        "ui-card-content": UiCardContent;
-        "ui-card-header": UiCardHeader;
-        "ui-card-title": UiCardTitle;
-        "ui-input": UiInput;
+        "order-id-cell": OrderIdCell;
+        "status-badge": StatusBadge;
+        "status-icon": StatusIcon;
+        "ui-avatar": UiAvatar;
+        "ui-icon": UiIcon;
+        "ui-text": UiText;
     }
 }
 export { LocalJSX as JSX };
@@ -343,12 +272,12 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "ui-button": LocalJSX.UiButton & JSXBase.HTMLAttributes<HTMLUiButtonElement>;
-            "ui-card": LocalJSX.UiCard & JSXBase.HTMLAttributes<HTMLUiCardElement>;
-            "ui-card-content": LocalJSX.UiCardContent & JSXBase.HTMLAttributes<HTMLUiCardContentElement>;
-            "ui-card-header": LocalJSX.UiCardHeader & JSXBase.HTMLAttributes<HTMLUiCardHeaderElement>;
-            "ui-card-title": LocalJSX.UiCardTitle & JSXBase.HTMLAttributes<HTMLUiCardTitleElement>;
-            "ui-input": LocalJSX.UiInput & JSXBase.HTMLAttributes<HTMLUiInputElement>;
+            "order-id-cell": LocalJSX.OrderIdCell & JSXBase.HTMLAttributes<HTMLOrderIdCellElement>;
+            "status-badge": LocalJSX.StatusBadge & JSXBase.HTMLAttributes<HTMLStatusBadgeElement>;
+            "status-icon": LocalJSX.StatusIcon & JSXBase.HTMLAttributes<HTMLStatusIconElement>;
+            "ui-avatar": LocalJSX.UiAvatar & JSXBase.HTMLAttributes<HTMLUiAvatarElement>;
+            "ui-icon": LocalJSX.UiIcon & JSXBase.HTMLAttributes<HTMLUiIconElement>;
+            "ui-text": LocalJSX.UiText & JSXBase.HTMLAttributes<HTMLUiTextElement>;
         }
     }
 }

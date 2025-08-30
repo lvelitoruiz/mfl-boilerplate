@@ -1,109 +1,102 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>UI Library - Cross-Framework Components</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>UI Library Components Test</title>
 
-    <script type="module" src="/build/ui-library.esm.js"></script>
-    <script nomodule src="/build/ui-library.js"></script>
-    <style>
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-        margin: 0;
-        padding: 2rem;
-        background-color: #f5f5f5;
-      }
-      .demo-container {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .demo-section {
-        margin-bottom: 3rem;
-      }
-      .demo-section h2 {
-        color: #333;
-        margin-bottom: 1rem;
-      }
-      .demo-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin-bottom: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="demo-container">
-      <h1>UI Library Demo</h1>
-      <p>Cross-framework components built with Stencil and Tailwind CSS</p>
-      
-      <div class="demo-section">
-        <h2>Buttons</h2>
-        <div class="demo-grid">
-          <ui-button variant="primary">Primary Button</ui-button>
-          <ui-button variant="secondary">Secondary Button</ui-button>
-          <ui-button variant="outline">Outline Button</ui-button>
-          <ui-button variant="ghost">Ghost Button</ui-button>
-          <ui-button variant="destructive">Destructive Button</ui-button>
-        </div>
-        
-        <div class="demo-grid">
-          <ui-button size="sm">Small</ui-button>
-          <ui-button size="md">Medium</ui-button>
-          <ui-button size="lg">Large</ui-button>
-        </div>
-        
-        <div class="demo-grid">
-          <ui-button loading="true">Loading...</ui-button>
-          <ui-button disabled="true">Disabled</ui-button>
-        </div>
-      </div>
-      
-      <div class="demo-section">
-        <h2>Cards</h2>
-        <div class="demo-grid">
-          <ui-card>
-            <ui-card-header>
-              <ui-card-title>Card Title</ui-card-title>
-            </ui-card-header>
-            <ui-card-content>
-              <p>This is a simple card example with header and content.</p>
-            </ui-card-content>
-          </ui-card>
-        </div>
-      </div>
-      
-      <div class="demo-section">
-        <h2>Inputs</h2>
-        <div style="max-width: 300px;">
-          <ui-input 
-            label="Email" 
-            type="email" 
-            placeholder="Enter your email"
-            input-id="email-input"
-          ></ui-input>
-          
-          <br><br>
-          
-          <ui-input 
-            label="Password" 
-            type="password" 
-            placeholder="Enter your password"
-            input-id="password-input"
-            required="true"
-          ></ui-input>
-          
-          <br><br>
-          
-          <ui-input 
-            label="Error Example" 
-            error="true"
-            error-message="This field is required"
-            input-id="error-input"
-          ></ui-input>
-        </div>
+  <link rel="stylesheet" href="/build/ui-library.css">
+  <script type="module" src="/build/ui-library.esm.js"></script>
+  <script nomodule src="/build/ui-library.js"></script>
+  
+  <style>
+    body {
+      font-family: var(--ui-font-family, "Open Sans", sans-serif);
+      margin: 0;
+      padding: 20px;
+      background-color: var(--ui-bg-secondary, #fafafa);
+      color: var(--ui-text-primary, #616161);
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .component-group {
+      display: flex;
+      gap: 12px;
+      margin: 16px 0;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .vertical-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 16px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>UI Library Components Test</h1>
+    <p>Components with Figma design tokens</p>
+    
+    <div class="section">
+      <h2>StatusBadge</h2>
+      <div class="component-group">
+        <status-badge variant="new" size="sm">New</status-badge>
+        <status-badge variant="viewed" size="md">Viewed</status-badge>
+        <status-badge variant="review" size="md">Review</status-badge>
+        <status-badge variant="complete" size="lg">Complete</status-badge>
+        <status-badge variant="closed" size="md">Closed</status-badge>
       </div>
     </div>
-  </body>
+    
+    <div class="section">
+      <h2>Text Components</h2>
+      <div class="vertical-group">
+        <ui-text variant="h1">Heading 1 - Large Title</ui-text>
+        <ui-text variant="h2">Heading 2 - Medium Title</ui-text>
+        <ui-text variant="h3">Heading 3 - Small Title</ui-text>
+        <ui-text variant="body">Body text - Regular paragraph content</ui-text>
+        <ui-text variant="caption" color="secondary">Caption - Small helper text</ui-text>
+        <ui-text variant="link" color="link">Link text - Clickable content</ui-text>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Icons</h2>
+      <div class="component-group">
+        <ui-icon name="user" size="sm"></ui-icon>
+        <ui-icon name="phone" size="md"></ui-icon>
+        <ui-icon name="email" size="md"></ui-icon>
+        <ui-icon name="chevron-down" size="lg"></ui-icon>
+        <ui-icon name="edit" size="lg"></ui-icon>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Status Icons</h2>
+      <div class="component-group">
+        <status-icon status="positive" size="sm"></status-icon>
+        <status-icon status="neutral" size="md"></status-icon>
+        <status-icon status="warning" size="md"></status-icon>
+        <status-icon status="critical" size="lg"></status-icon>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Avatars</h2>
+      <div class="component-group">
+        <ui-avatar initials="JD" size="sm"></ui-avatar>
+        <ui-avatar initials="AB" size="md"></ui-avatar>
+        <ui-avatar initials="XY" size="lg"></ui-avatar>
+        <ui-avatar fallback="icon" size="xl"></ui-avatar>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
