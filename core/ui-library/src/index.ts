@@ -30,3 +30,6 @@ export type {
   UiBlurEvent,
   ComponentEventMap,
 } from './types/component-interfaces';
+
+// Export the custom loader for framework integrations
+export { defineCustomElements } from './loader/custom-loader';

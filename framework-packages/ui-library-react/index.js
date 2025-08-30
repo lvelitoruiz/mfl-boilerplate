@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { defineCustomElements as defineElements } from '../../core/ui-library/loader';
+import { defineCustomElements as defineElements } from '../../core/ui-library/src/loader/custom-loader.js';
 
 // Initialize web components once globally
 let componentsInitialized = false;
