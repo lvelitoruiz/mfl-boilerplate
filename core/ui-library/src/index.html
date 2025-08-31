@@ -97,6 +97,199 @@
         <ui-avatar fallback="icon" size="xl"></ui-avatar>
       </div>
     </div>
+
+    <!-- Molecules -->
+    <div class="section">
+      <h2>Molecules</h2>
+      
+      <h3>Order ID Cells</h3>
+      <div class="vertical-group" style="max-width: 200px;">
+        <order-id-cell 
+          order-id="WO-2024-001" 
+          status="new" 
+          date="2024-01-15" 
+          time="10:30 AM">
+        </order-id-cell>
+        <order-id-cell 
+          order-id="WO-2024-002" 
+          status="open" 
+          date="2024-01-14" 
+          time="02:15 PM">
+        </order-id-cell>
+        <order-id-cell 
+          order-id="WO-2024-003" 
+          status="closed" 
+          date="2024-01-13" 
+          time="11:45 AM">
+        </order-id-cell>
+      </div>
+
+      <h3>Status Cells</h3>
+      <div class="component-group">
+        <status-cell status="New" variant="new"></status-cell>
+        <status-cell status="In Progress" variant="viewed"></status-cell>
+        <status-cell status="Review" variant="review"></status-cell>
+        <status-cell status="Complete" variant="complete"></status-cell>
+        <status-cell status="Closed" variant="closed"></status-cell>
+      </div>
+
+      <h3>Contact Cells</h3>
+      <div class="vertical-group" style="max-width: 200px;">
+        <contact-cell name="John Smith" show-avatar="true"></contact-cell>
+        <contact-cell name="Maria Rodriguez" show-avatar="true"></contact-cell>
+        <contact-cell name="David Johnson" show-avatar="false"></contact-cell>
+      </div>
+
+      <h3>Contact Info Cells</h3>
+      <div class="vertical-group" style="max-width: 200px;">
+        <contact-info-cell type="email" value="john@example.com" clickable="true"></contact-info-cell>
+        <contact-info-cell type="phone" value="+1-555-0123" clickable="true"></contact-info-cell>
+        <contact-info-cell type="text" value="Not available" clickable="false"></contact-info-cell>
+      </div>
+
+      <h3>Dropdown Cells</h3>
+      <div class="vertical-group" style="max-width: 200px;">
+        <dropdown-cell 
+          value="john-smith" 
+          placeholder="Select Service Advisor">
+        </dropdown-cell>
+        <dropdown-cell 
+          value="" 
+          placeholder="Select Technician">
+        </dropdown-cell>
+      </div>
+
+      <h3>Table Header Cells</h3>
+      <div style="display: flex; background: var(--ui-bg-secondary); border-radius: 4px;">
+        <table-header-cell sortable="true" sort-direction="asc" style="flex: 1;">Order ID</table-header-cell>
+        <table-header-cell sortable="true" style="flex: 1;">Customer</table-header-cell>
+        <table-header-cell sortable="false" style="flex: 1;">Contact</table-header-cell>
+        <table-header-cell sortable="true" sort-direction="desc" style="flex: 1;">Status</table-header-cell>
+      </div>
+    </div>
+
+    <!-- Organisms -->
+    <div class="section">
+      <h2>Organisms</h2>
+      
+      <h3>Table Header</h3>
+      <table-header id="sample-header"></table-header>
+      
+      <h3>Repair Orders Table</h3>
+      <repair-orders-table id="sample-table"></repair-orders-table>
+    </div>
+
   </div>
+
+  <script>
+    // Add sample dropdown options and event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropdowns = document.querySelectorAll('dropdown-cell');
+      if (dropdowns[0]) {
+        dropdowns[0].options = [
+          { value: 'john-smith', label: 'John Smith' },
+          { value: 'maria-rodriguez', label: 'Maria Rodriguez' },
+          { value: 'david-johnson', label: 'David Johnson' }
+        ];
+      }
+      if (dropdowns[1]) {
+        dropdowns[1].options = [
+          { value: 'tech-1', label: 'Mike Wilson' },
+          { value: 'tech-2', label: 'Sarah Chen' },
+          { value: 'tech-3', label: 'Robert Davis' }
+        ];
+      }
+
+      // Event listeners for interactions
+      document.querySelectorAll('order-id-cell').forEach(cell => {
+        cell.addEventListener('orderClick', (e) => {
+          console.log('Order clicked:', e.detail);
+        });
+      });
+
+      document.querySelectorAll('dropdown-cell').forEach(cell => {
+        cell.addEventListener('dropdownChange', (e) => {
+          console.log('Dropdown changed:', e.detail);
+          cell.value = e.detail;
+        });
+      });
+
+      document.querySelectorAll('contact-cell').forEach(cell => {
+        cell.addEventListener('contactClick', (e) => {
+          console.log('Contact clicked:', e.detail);
+        });
+      });
+
+      document.querySelectorAll('contact-info-cell').forEach(cell => {
+        cell.addEventListener('infoClick', (e) => {
+          console.log('Contact info clicked:', e.detail);
+        });
+      });
+
+      document.querySelectorAll('table-header-cell').forEach(cell => {
+        cell.addEventListener('sortClick', (e) => {
+          console.log('Sort clicked:', cell.textContent);
+        });
+      });
+
+      // Setup organisms with sample data
+      const sampleColumns = [
+        { key: 'roId', title: 'RO ID', icon: 'edit', sortable: true, width: '162px' },
+        { key: 'serviceAdvisor', title: 'Service Advisor', icon: 'user', sortable: false, width: '173px' },
+        { key: 'technician', title: 'Technician', icon: 'user', sortable: false, width: '173px' },
+        { key: 'customer', title: 'Customer', icon: 'user', sortable: true, width: '130px' },
+        { key: 'contactInfo', title: 'Contact Info', icon: 'phone', sortable: true, width: '173px' },
+        { key: 'media', title: 'Media', icon: 'eye', sortable: false, width: '173px' },
+        { key: 'inspections', title: 'Inspections', icon: 'check', sortable: false, width: '173px' },
+        { key: 'estimates', title: 'Estimates', icon: 'edit', sortable: false, width: '173px' },
+        { key: 'payments', title: 'Payments', icon: 'more', sortable: false, width: '173px' },
+      ];
+
+      const sampleData = [
+        {
+          id: '1',
+          orderId: 'IOPU12345',
+          orderStatus: 'open',
+          orderDate: 'Nov 19, 2022',
+          orderTime: '03:52 PM',
+          serviceAdvisor: { id: 'sa1', name: 'Ronald Richards' },
+          technician: { id: 't1', name: 'Shannon Rode' },
+          customer: { id: 'c1', name: 'Kathryn Murphy' },
+          contactInfo: { type: 'email', value: 'georgia.young@example.com' },
+          media: { status: 'sent', label: 'Sent' },
+          inspections: { status: 'none', label: 'None' },
+          estimates: { status: 'draft', label: 'Draft' },
+          payments: { status: 'draft', label: 'Draft' }
+        },
+        {
+          id: '2',
+          orderId: 'ASMR79581',
+          orderStatus: 'closed',
+          orderDate: 'Dec 10, 2022',
+          orderTime: '03:52 PM',
+          serviceAdvisor: { id: 'sa2', name: 'Jenny Wilson' },
+          technician: { id: 't2', name: 'Kathryn Murphy' },
+          customer: { id: 'c2', name: 'Devon Lane' },
+          contactInfo: { type: 'phone', value: '(808) 555-0111' },
+          media: { status: 'review', label: 'For review' },
+          inspections: { status: 'none', label: 'None' },
+          estimates: { status: 'confirmed', label: 'Confirmed' },
+          payments: { status: 'none', label: 'None' }
+        }
+      ];
+
+      // Setup organisms
+      const headerElement = document.getElementById('sample-header');
+      const tableElement = document.getElementById('sample-table');
+
+      if (headerElement) {
+        headerElement.columns = sampleColumns;
+      }
+
+      if (tableElement) {
+        tableElement.data = sampleData;
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,176 @@
+table-row {
+  display: block;
+  width: 100%;
+  border-left: 1px solid var(--ui-border-color, #eceff1);
+  border-right: 1px solid var(--ui-border-color, #eceff1);
+  border-bottom: 1px solid var(--ui-border-color, #eceff1);
+}
+
+.table-row {
+  width: 100%;
+}
+
+.table-row--selectable {
+  cursor: pointer;
+}
+
+.table-row--selectable:hover {
+  background-color: var(--ui-bg-hover, #f8f9fa);
+}
+
+.table-row--selected {
+  background-color: var(--ui-bg-neutral, #eaf2fb);
+}
+
+.table-row:nth-child(even) {
+  background-color: var(--ui-bg-secondary, #fafafa);
+}
+
+.table-row__content {
+  display: grid;
+  grid-template-columns: 
+    162px    /* Order ID */
+    173px    /* Service Advisor */
+    173px    /* Technician */
+    130px    /* Customer */
+    173px    /* Contact Info */
+    173px    /* Media */
+    173px    /* Inspections */
+    173px    /* Estimates */
+    173px    /* Payments */
+    36px;    /* Actions */
+  min-height: 56px;
+  align-items: center;
+  gap: 0;
+  width: 1539px;
+}
+
+.table-row__cell {
+  padding: 0;
+  min-height: 56px;
+  height: auto;
+  display: block;
+  border-right: 1px solid var(--ui-border-color, #eceff1);
+  box-sizing: border-box;
+  overflow: visible;
+  font-family: var(--ui-font-family);
+  font-size: var(--ui-font-size-sm, 0.875rem);
+  color: var(--ui-text-primary, #616161);
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.table-row__cell:last-child {
+  border-right: none;
+}
+
+/* Specific cell styling */
+.table-row__cell--order {
+  width: 162px;
+  min-width: 162px;
+  max-width: 162px;
+  flex-shrink: 0;
+}
+
+.table-row__cell--service-advisor,
+.table-row__cell--technician {
+  width: 173px;
+  min-width: 173px;
+  max-width: 173px;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+
+.table-row__cell--customer {
+  width: 130px;
+  min-width: 130px;
+  max-width: 130px;
+  flex-shrink: 0;
+}
+
+.table-row__cell--contact {
+  width: 173px;
+  min-width: 173px;
+  max-width: 173px;
+  flex-shrink: 0;
+}
+
+.table-row__cell--media,
+.table-row__cell--inspections,
+.table-row__cell--estimates,
+.table-row__cell--payments {
+  width: 173px;
+  min-width: 173px;
+  max-width: 173px;
+  flex-shrink: 0;
+  justify-content: flex-start;
+}
+
+.table-row__cell--actions {
+  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
+  flex-shrink: 0;
+  justify-content: center;
+  padding: 8px;
+}
+
+.table-row__actions-icon {
+  color: var(--ui-text-secondary, #9e9e9e);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.table-row__actions-icon:hover {
+  color: var(--ui-text-primary, #616161);
+}
+
+/* Ensure child components take full width and height */
+.table-row__cell order-id-cell,
+.table-row__cell dropdown-cell,
+.table-row__cell contact-cell,
+.table-row__cell contact-info-cell,
+.table-row__cell status-cell {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border: none;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .table-row__content {
+    grid-template-columns: 
+      1fr      /* Order ID */
+      1fr      /* Service Advisor */
+      1fr      /* Technician */
+      1fr      /* Customer */
+      1fr      /* Contact Info */
+      80px     /* Media */
+      80px     /* Inspections */
+      80px     /* Estimates */
+      80px     /* Payments */
+      50px;    /* Actions */
+  }
+}
+
+@media (max-width: 768px) {
+  .table-row__content {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, auto);
+    gap: var(--ui-spacing-xs, 4px);
+    padding: var(--ui-spacing-sm, 8px);
+  }
+  
+  .table-row__cell {
+    border-right: none;
+    border-bottom: 1px solid var(--ui-border-color, #eceff1);
+    min-height: auto;
+    padding: var(--ui-spacing-xs, 4px) 0;
+  }
+  
+  .table-row__cell:last-child {
+    border-bottom: none;
+  }
+}

@@ -60,3 +60,8 @@ status-badge {
   background-color: var(--ui-bg-notification);
   color: var(--ui-text-notification);
 }
+
+.status-badge--secondary {
+  background-color: var(--ui-bg-secondary);
+  color: var(--ui-text-secondary);
+}

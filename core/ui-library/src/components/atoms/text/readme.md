@@ -19,12 +19,18 @@
 
 ### Used by
 
- - [order-id-cell](../../molecules/order-id-cell)
+ - [contact-cell](../../molecules/contact-cell)
+ - [contact-info-cell](../../molecules/contact-info-cell)
+ - [dropdown-cell](../../molecules/dropdown-cell)
+ - [table-header-cell](../../molecules/table-header-cell)
 
 ### Graph
 ```mermaid
 graph TD;
-  order-id-cell --> ui-text
+  contact-cell --> ui-text
+  contact-info-cell --> ui-text
+  dropdown-cell --> ui-text
+  table-header-cell --> ui-text
   style ui-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

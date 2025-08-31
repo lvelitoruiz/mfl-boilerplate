@@ -16,16 +16,16 @@ export class StatusBadge {
 
   private getVariantClass(): string {
     const variantMap = {
-      'new': 'positive',
+      'sent': 'positive',
+      'published': 'positive', 
       'complete': 'positive',
       'confirmed': 'positive',
+      'new': 'neutral',
       'viewed': 'neutral',
-      'sent': 'neutral',
       'draft': 'neutral',
       'review': 'warning',
-      'published': 'warning',
-      'none': 'neutral',
-      'closed': 'critical'
+      'none': 'secondary',
+      'closed': 'secondary'
     };
     
     return variantMap[this.variant] || 'neutral';

@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.table-container {
+  background: var(--ui-bg-primary, #ffffff);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ui-border-color, #eceff1);
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ui-text-secondary, #666666);
+}
+
+.loading-state {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ui-text-secondary, #666666);
+}
+
+.table-row:not(:last-child) {
+  border-bottom: 1px solid var(--ui-border-secondary, #f0f0f0);
+}
