@@ -1,0 +1,31 @@
+contact-cell {
+  display: block;
+  padding: 16px 12px;
+  min-width: 140px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.contact-cell {
+  width: 100%;
+}
+
+.contact-cell--clickable {
+  cursor: pointer;
+}
+
+.contact-cell--clickable:hover {
+  background-color: var(--ui-bg-hover, #f5f5f5);
+  border-radius: var(--ui-radius-base, 4px);
+}
+
+.contact-cell__content {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-spacing-sm, 8px);
+}
+
+.contact-cell__name {
+  flex: 1;
+  min-width: 0;
+}

@@ -13,10 +13,19 @@ const config: StorybookConfig = {
     name: '@storybook/web-components-vite',
     options: {},
   },
+  staticDirs: ['../dist'],
 
   viteFinal: async config =>
     mergeConfig(config, {
       plugins: [nxViteTsPaths()],
+      optimizeDeps: {
+        exclude: ['@stencil/core']
+      },
+      server: {
+        fs: {
+          allow: ['..', process.cwd()]
+        }
+      },
       css: {
         postcss: {
           plugins: [

@@ -1,22 +1,11 @@
 import type { Preview } from '@storybook/web-components';
-import '../src/global/app.css';
+import '../src/tokens/design-tokens.css';
 
-// Initialize web components when they become available
-let componentsInitialized = false;
-const initializeComponents = async () => {
-  if (typeof window !== 'undefined' && !componentsInitialized) {
-    try {
-      const { defineCustomElements } = await import('../dist/esm/loader.js');
-      await defineCustomElements();
-      componentsInitialized = true;
-    } catch (error) {
-      console.warn('Could not load web components:', error);
-    }
-  }
-};
-
-// Try to initialize immediately
-initializeComponents();
+// Load built components directly
+const script = document.createElement('script');
+script.src = '/dist/ui-library/ui-library.esm.js';
+script.type = 'module';
+document.head.appendChild(script);
 
 const preview: Preview = {
   parameters: {
@@ -29,6 +18,12 @@ const preview: Preview = {
     docs: {
       description: {
         component: 'UI Library components built with Stencil.js and Tailwind CSS',
+      },
+    },
+    options: {
+      storySort: {
+        order: ['Atoms', 'Molecules', 'Organisms'],
+        method: 'alphabetical',
       },
     },
   },

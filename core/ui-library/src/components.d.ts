@@ -5,11 +5,74 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ButtonSize, ButtonVariant } from "./components/ui-button/ui-button";
-import { InputType } from "./components/ui-input/ui-input";
-export { ButtonSize, ButtonVariant } from "./components/ui-button/ui-button";
-export { InputType } from "./components/ui-input/ui-input";
+import { ContactInfoCellProps } from "./components/molecules/contact-info-cell/contact-info-cell";
+import { DropdownOption } from "./components/molecules/dropdown-cell/dropdown-cell";
+import { OrderIdCellProps } from "./components/molecules/order-id-cell/order-id-cell";
+import { RepairOrderData } from "./components/organisms/repair-orders-table/repair-orders-table";
+import { StatusBadgeProps } from "./components/atoms/status-badge/status-badge";
+import { StatusCellProps } from "./components/molecules/status-cell/status-cell";
+import { StatusIconProps } from "./components/atoms/status-icon/status-icon";
+import { TableColumn } from "./components/organisms/table-header/table-header";
+import { RepairOrderData as RepairOrderData1 } from "./components/organisms/table-row/table-row";
+import { AvatarProps } from "./components/atoms/avatar/avatar";
+import { IconProps } from "./components/atoms/icon/icon";
+import { TextProps } from "./components/atoms/text/text";
+export { ContactInfoCellProps } from "./components/molecules/contact-info-cell/contact-info-cell";
+export { DropdownOption } from "./components/molecules/dropdown-cell/dropdown-cell";
+export { OrderIdCellProps } from "./components/molecules/order-id-cell/order-id-cell";
+export { RepairOrderData } from "./components/organisms/repair-orders-table/repair-orders-table";
+export { StatusBadgeProps } from "./components/atoms/status-badge/status-badge";
+export { StatusCellProps } from "./components/molecules/status-cell/status-cell";
+export { StatusIconProps } from "./components/atoms/status-icon/status-icon";
+export { TableColumn } from "./components/organisms/table-header/table-header";
+export { RepairOrderData as RepairOrderData1 } from "./components/organisms/table-row/table-row";
+export { AvatarProps } from "./components/atoms/avatar/avatar";
+export { IconProps } from "./components/atoms/icon/icon";
+export { TextProps } from "./components/atoms/text/text";
 export namespace Components {
+    interface ContactCell {
+        "avatar"?: string;
+        /**
+          * @default ''
+         */
+        "name": string;
+        /**
+          * @default true
+         */
+        "showAvatar": boolean;
+    }
+    interface ContactInfoCell {
+        /**
+          * @default false
+         */
+        "clickable": boolean;
+        /**
+          * @default 'text'
+         */
+        "type": ContactInfoCellProps['type'];
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
+    interface DropdownCell {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default []
+         */
+        "options": DropdownOption[];
+        /**
+          * @default 'Select...'
+         */
+        "placeholder": string;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -24,181 +87,434 @@ export namespace Components {
          */
         "middle": string;
     }
-    interface UiButton {
+    interface OrderIdCell {
         /**
-          * ARIA described by for additional context
+          * @default ''
          */
-        "ariaDescribedby": string;
+        "date": string;
+        "notificationCount"?: number;
         /**
-          * ARIA label for accessibility
+          * @default ''
          */
-        "ariaLabel": string;
+        "orderId": string;
         /**
-          * Disabled state
-          * @default false
+          * @default 'open'
          */
-        "disabled": boolean;
+        "status": OrderIdCellProps['status'];
         /**
-          * Loading state
+          * @default ''
+         */
+        "time": string;
+    }
+    interface RepairOrdersTable {
+        /**
+          * @default []
+         */
+        "data": RepairOrderData[];
+        /**
           * @default false
          */
         "loading": boolean;
         /**
-          * Button size
+          * @default ''
+         */
+        "sortColumn": string;
+        /**
+          * @default null
+         */
+        "sortDirection": 'asc' | 'desc' | null;
+    }
+    interface StatusBadge {
+        /**
           * @default 'md'
          */
-        "size": ButtonSize;
+        "size": StatusBadgeProps['size'];
         /**
-          * Button type
-          * @default 'button'
+          * @default 'none'
          */
-        "type": 'button' | 'submit' | 'reset';
+        "variant": StatusBadgeProps['variant'];
+    }
+    interface StatusCell {
         /**
-          * Button variant style
-          * @default 'primary'
+          * @default ''
          */
-        "variant": ButtonVariant;
-    }
-    interface UiCard {
+        "status": string;
         /**
-          * ARIA label for the card
+          * @default 'none'
          */
-        "ariaLabel": string;
+        "variant": StatusCellProps['variant'];
+    }
+    interface StatusIcon {
         /**
-          * ARIA labelledby reference
+          * @default 'md'
          */
-        "ariaLabelledby": string;
-    }
-    interface UiCardContent {
-    }
-    interface UiCardHeader {
-    }
-    interface UiCardTitle {
-    }
-    interface UiInput {
+        "size": StatusIconProps['size'];
         /**
-          * Disabled state
+          * @default 'pending'
+         */
+        "status": StatusIconProps['status'];
+    }
+    interface TableHeader {
+        /**
+          * @default []
+         */
+        "columns": TableColumn[];
+        /**
+          * @default ''
+         */
+        "sortColumn": string;
+        /**
+          * @default null
+         */
+        "sortDirection": 'asc' | 'desc' | null;
+    }
+    interface TableHeaderCell {
+        /**
+          * @default 'left'
+         */
+        "align": 'left' | 'center' | 'right';
+        /**
+          * @default null
+         */
+        "sortDirection"?: 'asc' | 'desc' | null;
+        /**
           * @default false
          */
-        "disabled": boolean;
+        "sortable": boolean;
+        "width"?: string | number;
+    }
+    interface TableRow {
+        "data": RepairOrderData1;
         /**
-          * Error state
           * @default false
          */
-        "error": boolean;
+        "selectable": boolean;
         /**
-          * Error message
-          * @default ''
-         */
-        "errorMessage": string;
-        /**
-          * Input ID
-          * @default ''
-         */
-        "inputId": string;
-        /**
-          * Label text
-          * @default ''
-         */
-        "label": string;
-        /**
-          * Input name
-          * @default ''
-         */
-        "name": string;
-        /**
-          * Placeholder text
-          * @default ''
-         */
-        "placeholder": string;
-        /**
-          * Required field
           * @default false
          */
-        "required": boolean;
+        "selected": boolean;
+    }
+    interface UiAvatar {
         /**
-          * Input type
-          * @default 'text'
-         */
-        "type": InputType;
-        /**
-          * Input value
           * @default ''
          */
-        "value": string;
+        "alt"?: string;
+        /**
+          * @default 'initials'
+         */
+        "fallback": AvatarProps['fallback'];
+        "initials"?: string;
+        /**
+          * @default 'md'
+         */
+        "size": AvatarProps['size'];
+        "src"?: string;
+    }
+    interface UiIcon {
+        "color"?: string;
+        /**
+          * @default 'user'
+         */
+        "name": IconProps['name'];
+        /**
+          * @default 'md'
+         */
+        "size": IconProps['size'];
+    }
+    interface UiText {
+        "color"?: TextProps['color'];
+        /**
+          * @default false
+         */
+        "truncate"?: boolean;
+        /**
+          * @default 'body'
+         */
+        "variant": TextProps['variant'];
+        "weight"?: TextProps['weight'];
     }
 }
-export interface UiInputCustomEvent<T> extends CustomEvent<T> {
+export interface ContactCellCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLUiInputElement;
+    target: HTMLContactCellElement;
+}
+export interface ContactInfoCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLContactInfoCellElement;
+}
+export interface DropdownCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDropdownCellElement;
+}
+export interface OrderIdCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOrderIdCellElement;
+}
+export interface RepairOrdersTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRepairOrdersTableElement;
+}
+export interface TableHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTableHeaderElement;
+}
+export interface TableHeaderCellCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTableHeaderCellElement;
+}
+export interface TableRowCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTableRowElement;
 }
 declare global {
+    interface HTMLContactCellElementEventMap {
+        "contactClick": string;
+    }
+    interface HTMLContactCellElement extends Components.ContactCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLContactCellElementEventMap>(type: K, listener: (this: HTMLContactCellElement, ev: ContactCellCustomEvent<HTMLContactCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLContactCellElementEventMap>(type: K, listener: (this: HTMLContactCellElement, ev: ContactCellCustomEvent<HTMLContactCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLContactCellElement: {
+        prototype: HTMLContactCellElement;
+        new (): HTMLContactCellElement;
+    };
+    interface HTMLContactInfoCellElementEventMap {
+        "infoClick": { type: string; value: string };
+    }
+    interface HTMLContactInfoCellElement extends Components.ContactInfoCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLContactInfoCellElementEventMap>(type: K, listener: (this: HTMLContactInfoCellElement, ev: ContactInfoCellCustomEvent<HTMLContactInfoCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLContactInfoCellElementEventMap>(type: K, listener: (this: HTMLContactInfoCellElement, ev: ContactInfoCellCustomEvent<HTMLContactInfoCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLContactInfoCellElement: {
+        prototype: HTMLContactInfoCellElement;
+        new (): HTMLContactInfoCellElement;
+    };
+    interface HTMLDropdownCellElementEventMap {
+        "dropdownChange": string;
+    }
+    interface HTMLDropdownCellElement extends Components.DropdownCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDropdownCellElementEventMap>(type: K, listener: (this: HTMLDropdownCellElement, ev: DropdownCellCustomEvent<HTMLDropdownCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDropdownCellElementEventMap>(type: K, listener: (this: HTMLDropdownCellElement, ev: DropdownCellCustomEvent<HTMLDropdownCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDropdownCellElement: {
+        prototype: HTMLDropdownCellElement;
+        new (): HTMLDropdownCellElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLUiButtonElement extends Components.UiButton, HTMLStencilElement {
+    interface HTMLOrderIdCellElementEventMap {
+        "orderClick": string;
     }
-    var HTMLUiButtonElement: {
-        prototype: HTMLUiButtonElement;
-        new (): HTMLUiButtonElement;
-    };
-    interface HTMLUiCardElement extends Components.UiCard, HTMLStencilElement {
-    }
-    var HTMLUiCardElement: {
-        prototype: HTMLUiCardElement;
-        new (): HTMLUiCardElement;
-    };
-    interface HTMLUiCardContentElement extends Components.UiCardContent, HTMLStencilElement {
-    }
-    var HTMLUiCardContentElement: {
-        prototype: HTMLUiCardContentElement;
-        new (): HTMLUiCardContentElement;
-    };
-    interface HTMLUiCardHeaderElement extends Components.UiCardHeader, HTMLStencilElement {
-    }
-    var HTMLUiCardHeaderElement: {
-        prototype: HTMLUiCardHeaderElement;
-        new (): HTMLUiCardHeaderElement;
-    };
-    interface HTMLUiCardTitleElement extends Components.UiCardTitle, HTMLStencilElement {
-    }
-    var HTMLUiCardTitleElement: {
-        prototype: HTMLUiCardTitleElement;
-        new (): HTMLUiCardTitleElement;
-    };
-    interface HTMLUiInputElementEventMap {
-        "uiInput": string;
-        "uiBlur": void;
-        "uiFocus": void;
-    }
-    interface HTMLUiInputElement extends Components.UiInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLOrderIdCellElement extends Components.OrderIdCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOrderIdCellElementEventMap>(type: K, listener: (this: HTMLOrderIdCellElement, ev: OrderIdCellCustomEvent<HTMLOrderIdCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOrderIdCellElementEventMap>(type: K, listener: (this: HTMLOrderIdCellElement, ev: OrderIdCellCustomEvent<HTMLOrderIdCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLUiInputElement: {
-        prototype: HTMLUiInputElement;
-        new (): HTMLUiInputElement;
+    var HTMLOrderIdCellElement: {
+        prototype: HTMLOrderIdCellElement;
+        new (): HTMLOrderIdCellElement;
+    };
+    interface HTMLRepairOrdersTableElementEventMap {
+        "sortChange": { column: string; direction: 'asc' | 'desc' };
+        "rowClick": RepairOrderData;
+        "cellClick": { cellType: string; value: any; data: RepairOrderData };
+    }
+    interface HTMLRepairOrdersTableElement extends Components.RepairOrdersTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRepairOrdersTableElementEventMap>(type: K, listener: (this: HTMLRepairOrdersTableElement, ev: RepairOrdersTableCustomEvent<HTMLRepairOrdersTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRepairOrdersTableElementEventMap>(type: K, listener: (this: HTMLRepairOrdersTableElement, ev: RepairOrdersTableCustomEvent<HTMLRepairOrdersTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRepairOrdersTableElement: {
+        prototype: HTMLRepairOrdersTableElement;
+        new (): HTMLRepairOrdersTableElement;
+    };
+    interface HTMLStatusBadgeElement extends Components.StatusBadge, HTMLStencilElement {
+    }
+    var HTMLStatusBadgeElement: {
+        prototype: HTMLStatusBadgeElement;
+        new (): HTMLStatusBadgeElement;
+    };
+    interface HTMLStatusCellElement extends Components.StatusCell, HTMLStencilElement {
+    }
+    var HTMLStatusCellElement: {
+        prototype: HTMLStatusCellElement;
+        new (): HTMLStatusCellElement;
+    };
+    interface HTMLStatusIconElement extends Components.StatusIcon, HTMLStencilElement {
+    }
+    var HTMLStatusIconElement: {
+        prototype: HTMLStatusIconElement;
+        new (): HTMLStatusIconElement;
+    };
+    interface HTMLTableHeaderElementEventMap {
+        "sortChange": { column: string; direction: 'asc' | 'desc' };
+    }
+    interface HTMLTableHeaderElement extends Components.TableHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTableHeaderElementEventMap>(type: K, listener: (this: HTMLTableHeaderElement, ev: TableHeaderCustomEvent<HTMLTableHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTableHeaderElementEventMap>(type: K, listener: (this: HTMLTableHeaderElement, ev: TableHeaderCustomEvent<HTMLTableHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTableHeaderElement: {
+        prototype: HTMLTableHeaderElement;
+        new (): HTMLTableHeaderElement;
+    };
+    interface HTMLTableHeaderCellElementEventMap {
+        "sortClick": void;
+    }
+    interface HTMLTableHeaderCellElement extends Components.TableHeaderCell, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTableHeaderCellElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: TableHeaderCellCustomEvent<HTMLTableHeaderCellElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTableHeaderCellElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: TableHeaderCellCustomEvent<HTMLTableHeaderCellElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTableHeaderCellElement: {
+        prototype: HTMLTableHeaderCellElement;
+        new (): HTMLTableHeaderCellElement;
+    };
+    interface HTMLTableRowElementEventMap {
+        "rowClick": RepairOrderData1;
+        "cellClick": { cellType: string; value: any; data: RepairOrderData1 };
+        "serviceAdvisorChange": { orderId: string; value: string };
+        "technicianChange": { orderId: string; value: string };
+    }
+    interface HTMLTableRowElement extends Components.TableRow, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTableRowElementEventMap>(type: K, listener: (this: HTMLTableRowElement, ev: TableRowCustomEvent<HTMLTableRowElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTableRowElementEventMap>(type: K, listener: (this: HTMLTableRowElement, ev: TableRowCustomEvent<HTMLTableRowElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTableRowElement: {
+        prototype: HTMLTableRowElement;
+        new (): HTMLTableRowElement;
+    };
+    interface HTMLUiAvatarElement extends Components.UiAvatar, HTMLStencilElement {
+    }
+    var HTMLUiAvatarElement: {
+        prototype: HTMLUiAvatarElement;
+        new (): HTMLUiAvatarElement;
+    };
+    interface HTMLUiIconElement extends Components.UiIcon, HTMLStencilElement {
+    }
+    var HTMLUiIconElement: {
+        prototype: HTMLUiIconElement;
+        new (): HTMLUiIconElement;
+    };
+    interface HTMLUiTextElement extends Components.UiText, HTMLStencilElement {
+    }
+    var HTMLUiTextElement: {
+        prototype: HTMLUiTextElement;
+        new (): HTMLUiTextElement;
     };
     interface HTMLElementTagNameMap {
+        "contact-cell": HTMLContactCellElement;
+        "contact-info-cell": HTMLContactInfoCellElement;
+        "dropdown-cell": HTMLDropdownCellElement;
         "my-component": HTMLMyComponentElement;
-        "ui-button": HTMLUiButtonElement;
-        "ui-card": HTMLUiCardElement;
-        "ui-card-content": HTMLUiCardContentElement;
-        "ui-card-header": HTMLUiCardHeaderElement;
-        "ui-card-title": HTMLUiCardTitleElement;
-        "ui-input": HTMLUiInputElement;
+        "order-id-cell": HTMLOrderIdCellElement;
+        "repair-orders-table": HTMLRepairOrdersTableElement;
+        "status-badge": HTMLStatusBadgeElement;
+        "status-cell": HTMLStatusCellElement;
+        "status-icon": HTMLStatusIconElement;
+        "table-header": HTMLTableHeaderElement;
+        "table-header-cell": HTMLTableHeaderCellElement;
+        "table-row": HTMLTableRowElement;
+        "ui-avatar": HTMLUiAvatarElement;
+        "ui-icon": HTMLUiIconElement;
+        "ui-text": HTMLUiTextElement;
     }
 }
 declare namespace LocalJSX {
+    interface ContactCell {
+        "avatar"?: string;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onContactClick"?: (event: ContactCellCustomEvent<string>) => void;
+        /**
+          * @default true
+         */
+        "showAvatar"?: boolean;
+    }
+    interface ContactInfoCell {
+        /**
+          * @default false
+         */
+        "clickable"?: boolean;
+        "onInfoClick"?: (event: ContactInfoCellCustomEvent<{ type: string; value: string }>) => void;
+        /**
+          * @default 'text'
+         */
+        "type"?: ContactInfoCellProps['type'];
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
+    interface DropdownCell {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "onDropdownChange"?: (event: DropdownCellCustomEvent<string>) => void;
+        /**
+          * @default []
+         */
+        "options"?: DropdownOption[];
+        /**
+          * @default 'Select...'
+         */
+        "placeholder"?: string;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -213,142 +529,199 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
-    interface UiButton {
+    interface OrderIdCell {
         /**
-          * ARIA described by for additional context
+          * @default ''
          */
-        "ariaDescribedby"?: string;
+        "date"?: string;
+        "notificationCount"?: number;
+        "onOrderClick"?: (event: OrderIdCellCustomEvent<string>) => void;
         /**
-          * ARIA label for accessibility
+          * @default ''
          */
-        "ariaLabel"?: string;
+        "orderId"?: string;
         /**
-          * Disabled state
-          * @default false
+          * @default 'open'
          */
-        "disabled"?: boolean;
+        "status"?: OrderIdCellProps['status'];
         /**
-          * Loading state
+          * @default ''
+         */
+        "time"?: string;
+    }
+    interface RepairOrdersTable {
+        /**
+          * @default []
+         */
+        "data"?: RepairOrderData[];
+        /**
           * @default false
          */
         "loading"?: boolean;
+        "onCellClick"?: (event: RepairOrdersTableCustomEvent<{ cellType: string; value: any; data: RepairOrderData }>) => void;
+        "onRowClick"?: (event: RepairOrdersTableCustomEvent<RepairOrderData>) => void;
+        "onSortChange"?: (event: RepairOrdersTableCustomEvent<{ column: string; direction: 'asc' | 'desc' }>) => void;
         /**
-          * Button size
+          * @default ''
+         */
+        "sortColumn"?: string;
+        /**
+          * @default null
+         */
+        "sortDirection"?: 'asc' | 'desc' | null;
+    }
+    interface StatusBadge {
+        /**
           * @default 'md'
          */
-        "size"?: ButtonSize;
+        "size"?: StatusBadgeProps['size'];
         /**
-          * Button type
-          * @default 'button'
+          * @default 'none'
          */
-        "type"?: 'button' | 'submit' | 'reset';
+        "variant"?: StatusBadgeProps['variant'];
+    }
+    interface StatusCell {
         /**
-          * Button variant style
-          * @default 'primary'
+          * @default ''
          */
-        "variant"?: ButtonVariant;
-    }
-    interface UiCard {
+        "status"?: string;
         /**
-          * ARIA label for the card
+          * @default 'none'
          */
-        "ariaLabel"?: string;
+        "variant"?: StatusCellProps['variant'];
+    }
+    interface StatusIcon {
         /**
-          * ARIA labelledby reference
+          * @default 'md'
          */
-        "ariaLabelledby"?: string;
-    }
-    interface UiCardContent {
-    }
-    interface UiCardHeader {
-    }
-    interface UiCardTitle {
-    }
-    interface UiInput {
+        "size"?: StatusIconProps['size'];
         /**
-          * Disabled state
+          * @default 'pending'
+         */
+        "status"?: StatusIconProps['status'];
+    }
+    interface TableHeader {
+        /**
+          * @default []
+         */
+        "columns"?: TableColumn[];
+        "onSortChange"?: (event: TableHeaderCustomEvent<{ column: string; direction: 'asc' | 'desc' }>) => void;
+        /**
+          * @default ''
+         */
+        "sortColumn"?: string;
+        /**
+          * @default null
+         */
+        "sortDirection"?: 'asc' | 'desc' | null;
+    }
+    interface TableHeaderCell {
+        /**
+          * @default 'left'
+         */
+        "align"?: 'left' | 'center' | 'right';
+        "onSortClick"?: (event: TableHeaderCellCustomEvent<void>) => void;
+        /**
+          * @default null
+         */
+        "sortDirection"?: 'asc' | 'desc' | null;
+        /**
           * @default false
          */
-        "disabled"?: boolean;
+        "sortable"?: boolean;
+        "width"?: string | number;
+    }
+    interface TableRow {
+        "data": RepairOrderData1;
+        "onCellClick"?: (event: TableRowCustomEvent<{ cellType: string; value: any; data: RepairOrderData1 }>) => void;
+        "onRowClick"?: (event: TableRowCustomEvent<RepairOrderData1>) => void;
+        "onServiceAdvisorChange"?: (event: TableRowCustomEvent<{ orderId: string; value: string }>) => void;
+        "onTechnicianChange"?: (event: TableRowCustomEvent<{ orderId: string; value: string }>) => void;
         /**
-          * Error state
           * @default false
          */
-        "error"?: boolean;
+        "selectable"?: boolean;
         /**
-          * Error message
-          * @default ''
-         */
-        "errorMessage"?: string;
-        /**
-          * Input ID
-          * @default ''
-         */
-        "inputId"?: string;
-        /**
-          * Label text
-          * @default ''
-         */
-        "label"?: string;
-        /**
-          * Input name
-          * @default ''
-         */
-        "name"?: string;
-        /**
-          * Input blur event
-         */
-        "onUiBlur"?: (event: UiInputCustomEvent<void>) => void;
-        /**
-          * Input focus event
-         */
-        "onUiFocus"?: (event: UiInputCustomEvent<void>) => void;
-        /**
-          * Input change event
-         */
-        "onUiInput"?: (event: UiInputCustomEvent<string>) => void;
-        /**
-          * Placeholder text
-          * @default ''
-         */
-        "placeholder"?: string;
-        /**
-          * Required field
           * @default false
          */
-        "required"?: boolean;
+        "selected"?: boolean;
+    }
+    interface UiAvatar {
         /**
-          * Input type
-          * @default 'text'
-         */
-        "type"?: InputType;
-        /**
-          * Input value
           * @default ''
          */
-        "value"?: string;
+        "alt"?: string;
+        /**
+          * @default 'initials'
+         */
+        "fallback"?: AvatarProps['fallback'];
+        "initials"?: string;
+        /**
+          * @default 'md'
+         */
+        "size"?: AvatarProps['size'];
+        "src"?: string;
+    }
+    interface UiIcon {
+        "color"?: string;
+        /**
+          * @default 'user'
+         */
+        "name"?: IconProps['name'];
+        /**
+          * @default 'md'
+         */
+        "size"?: IconProps['size'];
+    }
+    interface UiText {
+        "color"?: TextProps['color'];
+        /**
+          * @default false
+         */
+        "truncate"?: boolean;
+        /**
+          * @default 'body'
+         */
+        "variant"?: TextProps['variant'];
+        "weight"?: TextProps['weight'];
     }
     interface IntrinsicElements {
+        "contact-cell": ContactCell;
+        "contact-info-cell": ContactInfoCell;
+        "dropdown-cell": DropdownCell;
         "my-component": MyComponent;
-        "ui-button": UiButton;
-        "ui-card": UiCard;
-        "ui-card-content": UiCardContent;
-        "ui-card-header": UiCardHeader;
-        "ui-card-title": UiCardTitle;
-        "ui-input": UiInput;
+        "order-id-cell": OrderIdCell;
+        "repair-orders-table": RepairOrdersTable;
+        "status-badge": StatusBadge;
+        "status-cell": StatusCell;
+        "status-icon": StatusIcon;
+        "table-header": TableHeader;
+        "table-header-cell": TableHeaderCell;
+        "table-row": TableRow;
+        "ui-avatar": UiAvatar;
+        "ui-icon": UiIcon;
+        "ui-text": UiText;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "contact-cell": LocalJSX.ContactCell & JSXBase.HTMLAttributes<HTMLContactCellElement>;
+            "contact-info-cell": LocalJSX.ContactInfoCell & JSXBase.HTMLAttributes<HTMLContactInfoCellElement>;
+            "dropdown-cell": LocalJSX.DropdownCell & JSXBase.HTMLAttributes<HTMLDropdownCellElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "ui-button": LocalJSX.UiButton & JSXBase.HTMLAttributes<HTMLUiButtonElement>;
-            "ui-card": LocalJSX.UiCard & JSXBase.HTMLAttributes<HTMLUiCardElement>;
-            "ui-card-content": LocalJSX.UiCardContent & JSXBase.HTMLAttributes<HTMLUiCardContentElement>;
-            "ui-card-header": LocalJSX.UiCardHeader & JSXBase.HTMLAttributes<HTMLUiCardHeaderElement>;
-            "ui-card-title": LocalJSX.UiCardTitle & JSXBase.HTMLAttributes<HTMLUiCardTitleElement>;
-            "ui-input": LocalJSX.UiInput & JSXBase.HTMLAttributes<HTMLUiInputElement>;
+            "order-id-cell": LocalJSX.OrderIdCell & JSXBase.HTMLAttributes<HTMLOrderIdCellElement>;
+            "repair-orders-table": LocalJSX.RepairOrdersTable & JSXBase.HTMLAttributes<HTMLRepairOrdersTableElement>;
+            "status-badge": LocalJSX.StatusBadge & JSXBase.HTMLAttributes<HTMLStatusBadgeElement>;
+            "status-cell": LocalJSX.StatusCell & JSXBase.HTMLAttributes<HTMLStatusCellElement>;
+            "status-icon": LocalJSX.StatusIcon & JSXBase.HTMLAttributes<HTMLStatusIconElement>;
+            "table-header": LocalJSX.TableHeader & JSXBase.HTMLAttributes<HTMLTableHeaderElement>;
+            "table-header-cell": LocalJSX.TableHeaderCell & JSXBase.HTMLAttributes<HTMLTableHeaderCellElement>;
+            "table-row": LocalJSX.TableRow & JSXBase.HTMLAttributes<HTMLTableRowElement>;
+            "ui-avatar": LocalJSX.UiAvatar & JSXBase.HTMLAttributes<HTMLUiAvatarElement>;
+            "ui-icon": LocalJSX.UiIcon & JSXBase.HTMLAttributes<HTMLUiIconElement>;
+            "ui-text": LocalJSX.UiText & JSXBase.HTMLAttributes<HTMLUiTextElement>;
         }
     }
 }
