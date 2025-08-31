@@ -1,4 +1,4 @@
-# status-badge
+# status-cell
 
 
 
@@ -9,7 +9,7 @@
 
 | Property  | Attribute | Description | Type                                                                                                                   | Default  |
 | --------- | --------- | ----------- | ---------------------------------------------------------------------------------------------------------------------- | -------- |
-| `size`    | `size`    |             | `"lg" \| "md" \| "sm"`                                                                                                 | `'md'`   |
+| `status`  | `status`  |             | `string`                                                                                                               | `''`     |
 | `variant` | `variant` |             | `"closed" \| "complete" \| "confirmed" \| "draft" \| "new" \| "none" \| "published" \| "review" \| "sent" \| "viewed"` | `'none'` |
 
 
@@ -17,13 +17,18 @@
 
 ### Used by
 
- - [status-cell](../../molecules/status-cell)
+ - [table-row](../../organisms/table-row)
+
+### Depends on
+
+- [status-badge](../../atoms/status-badge)
 
 ### Graph
 ```mermaid
 graph TD;
   status-cell --> status-badge
-  style status-badge fill:#f9f,stroke:#333,stroke-width:4px
+  table-row --> status-cell
+  style status-cell fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
