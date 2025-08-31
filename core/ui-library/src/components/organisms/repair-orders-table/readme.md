@@ -44,7 +44,6 @@ graph TD;
   table-row --> status-cell
   table-row --> ui-icon
   order-id-cell --> status-icon
-  order-id-cell --> notification-badge
   dropdown-cell --> ui-text
   dropdown-cell --> ui-icon
   contact-cell --> ui-avatar

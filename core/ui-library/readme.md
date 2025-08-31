@@ -125,18 +125,26 @@ Components use CSS custom properties for theming:
 # Install dependencies
 npm install
 
+# Build/compile components
+npm run build
+
 # Start dev server with hot reload
 npm start
 
-# Run Storybook
+# Run Storybook (interactive documentation)
 npm run storybook
-
-# Build for production
-npm run build
 
 # Run tests
 npm test
 ```
+
+### Key Commands
+
+- **`npm run build`** - Compiles all Stencil components and generates framework-specific packages
+- **`npm run storybook`** - Starts Storybook dev server at http://localhost:6006
+- **`npm start`** - Starts development server for the library
+
+> **Note**: Always run `npm run build` after making changes to ensure components are compiled before viewing in Storybook.
 
 ## Architecture
 
