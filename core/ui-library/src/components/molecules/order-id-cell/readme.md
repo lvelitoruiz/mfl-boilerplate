@@ -32,13 +32,11 @@
 ### Depends on
 
 - [status-icon](../../atoms/status-icon)
-- [notification-badge](../../atoms/notification-badge)
 
 ### Graph
 ```mermaid
 graph TD;
   order-id-cell --> status-icon
-  order-id-cell --> notification-badge
   table-row --> order-id-cell
   style order-id-cell fill:#f9f,stroke:#333,stroke-width:4px
 ```
