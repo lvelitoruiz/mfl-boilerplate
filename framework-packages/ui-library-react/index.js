@@ -1,80 +1,36 @@
-import React, { forwardRef } from 'react';
-import { defineCustomElements as defineElements } from '../../core/ui-library/src/loader/custom-loader.js';
+'use client';
 
-// Initialize web components once globally
-let componentsInitialized = false;
-const initializeComponents = () => {
-  if (typeof window !== 'undefined' && !componentsInitialized) {
-    defineElements(window);
-    componentsInitialized = true;
-  }
+/**
+ * Simple React wrapper using direct web components
+ * Uses the same approach as the CDN demo that already works
+ */
+
+import React from 'react';
+
+// Simple wrapper function for web components in React
+const createReactWrapper = (tagName) => {
+  return React.forwardRef((props, ref) => {
+    return React.createElement(tagName, { ...props, ref });
+  });
 };
 
-// Initialize immediately if window is available
-if (typeof window !== 'undefined') {
-  initializeComponents();
-}
+// Export all components as React wrappers  
+export const ContactCell = createReactWrapper('contact-cell');
+export const ContactInfoCell = createReactWrapper('contact-info-cell');
+export const DropdownCell = createReactWrapper('dropdown-cell');
+export const MyComponent = createReactWrapper('my-component');
+export const OrderIdCell = createReactWrapper('order-id-cell');
+export const RepairOrdersTable = createReactWrapper('repair-orders-table');
+export const StatusBadge = createReactWrapper('status-badge');
+export const StatusCell = createReactWrapper('status-cell');
+export const StatusIcon = createReactWrapper('status-icon');
+export const TableHeader = createReactWrapper('table-header');
+export const TableHeaderCell = createReactWrapper('table-header-cell');
+export const TableRow = createReactWrapper('table-row');
+export const UiAvatar = createReactWrapper('ui-avatar');
+export const UiIcon = createReactWrapper('ui-icon');
+export const UiText = createReactWrapper('ui-text');
 
-// Helper function to convert React props to web component attributes
-const convertProps = (props) => {
-  const webComponentProps = { ...props };
-  
-  // Convert boolean props to string attributes for web components
-  if (typeof webComponentProps.loading === 'boolean') {
-    webComponentProps.loading = webComponentProps.loading ? 'true' : undefined;
-  }
-  if (typeof webComponentProps.disabled === 'boolean') {
-    webComponentProps.disabled = webComponentProps.disabled ? 'true' : undefined;
-  }
-  if (typeof webComponentProps.required === 'boolean') {
-    webComponentProps.required = webComponentProps.required ? 'true' : undefined;
-  }
-  if (typeof webComponentProps.error === 'boolean') {
-    webComponentProps.error = webComponentProps.error ? 'true' : undefined;
-  }
-
-  return webComponentProps;
-};
-
-// React wrapper components
-export const UiButton = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-button', { ...webComponentProps, ref }, props.children);
-});
-
-export const UiCard = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-card', { ...webComponentProps, ref }, props.children);
-});
-
-export const UiCardHeader = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-card-header', { ...webComponentProps, ref }, props.children);
-});
-
-export const UiCardTitle = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-card-title', { ...webComponentProps, ref }, props.children);
-});
-
-export const UiCardContent = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-card-content', { ...webComponentProps, ref }, props.children);
-});
-
-export const UiInput = forwardRef((props, ref) => {
-  const webComponentProps = convertProps(props);
-  return React.createElement('ui-input', { ...webComponentProps, ref });
-});
-
-// Export the initialize function
-export const defineCustomElements = () => {
-  initializeComponents();
-};
-
-UiButton.displayName = 'UiButton';
-UiCard.displayName = 'UiCard';
-UiCardHeader.displayName = 'UiCardHeader';
-UiCardTitle.displayName = 'UiCardTitle';
-UiCardContent.displayName = 'UiCardContent';
-UiInput.displayName = 'UiInput';
+// Backward compatibility aliases
+export const UiStatusBadge = StatusBadge;
+export const UiStatusIcon = StatusIcon;

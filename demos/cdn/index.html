@@ -160,70 +160,91 @@
     </div>
 
     <div class="demo-section">
-      <h2>🎨 Button Components</h2>
-      <p>Use buttons with different variants and sizes:</p>
+      <h2>🎨 Atomic Design Components</h2>
+      <p>Built with atomic design principles - atoms, molecules, and organisms:</p>
       
-      <div class="button-showcase">
-        <ui-button variant="primary">Primary Button</ui-button>
-        <ui-button variant="secondary">Secondary</ui-button>
-        <ui-button variant="outline">Outline</ui-button>
-        <ui-button variant="ghost">Ghost</ui-button>
-        <ui-button variant="destructive">Destructive</ui-button>
-      </div>
-      
-      <div class="size-showcase">
-        <ui-button variant="primary" size="sm">Small</ui-button>
-        <ui-button variant="primary" size="md">Medium</ui-button>
-        <ui-button variant="primary" size="lg">Large</ui-button>
+      <h3>🔸 Atoms</h3>
+      <div class="demo-grid">
+        <div class="form-example">
+          <h4>Avatars</h4>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <ui-avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="John Doe" size="sm"></ui-avatar>
+            <ui-avatar initials="JD" size="md"></ui-avatar>
+            <ui-avatar alt="Jane Smith" size="lg" fallback="icon"></ui-avatar>
+          </div>
+        </div>
+        
+        <div class="form-example">
+          <h4>Status Elements</h4>
+          <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+            <status-badge status="pending" size="sm">Pending</status-badge>
+            <status-badge status="in-progress" size="md">In Progress</status-badge>
+            <status-badge status="completed" size="lg">Completed</status-badge>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <status-icon status="pending" size="sm"></status-icon>
+            <status-icon status="in-progress" size="md"></status-icon>
+            <status-icon status="completed" size="lg"></status-icon>
+          </div>
+        </div>
+        
+        <div class="form-example">
+          <h4>Typography</h4>
+          <ui-text variant="h1" size="lg" weight="bold">Heading 1</ui-text>
+          <ui-text variant="h2" size="md" weight="semibold">Heading 2</ui-text>
+          <ui-text variant="body" size="sm">Body text example</ui-text>
+        </div>
       </div>
 
       <div class="code-block">
-&lt;!-- HTML is clean and semantic --&gt;
-&lt;ui-button variant="primary"&gt;Click me!&lt;/ui-button&gt;
-&lt;ui-button variant="outline" size="lg"&gt;Large Outline&lt;/ui-button&gt;
-&lt;ui-button variant="destructive" disabled&gt;Disabled&lt;/ui-button&gt;
+&lt;!-- Atomic Design HTML --&gt;
+&lt;ui-avatar initials="JD" size="md"&gt;&lt;/ui-avatar&gt;
+&lt;status-badge status="completed"&gt;Done&lt;/status-badge&gt;
+&lt;ui-text variant="h1" weight="bold"&gt;Clean HTML&lt;/ui-text&gt;
       </div>
     </div>
 
     <div class="demo-section">
-      <h2>📋 Forms & Inputs</h2>
+      <h2>🧬 Molecules & Organisms</h2>
+      
+      <h3>🔸 Molecules (Combined Atoms)</h3>
       <div class="demo-grid">
         <div class="form-example">
-          <h3>Contact Form</h3>
-          <div class="form-group">
-            <label>Full Name</label>
-            <ui-input type="text" placeholder="Enter your name" required></ui-input>
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <ui-input type="email" placeholder="your@email.com" required></ui-input>
-          </div>
-          <div class="form-group">
-            <label>Phone (Optional)</label>
-            <ui-input type="tel" placeholder="+1 (555) 123-4567"></ui-input>
-          </div>
-          <ui-button variant="primary">Submit Form</ui-button>
+          <h4>Contact Cells</h4>
+          <contact-cell name="John Doe" phone="+1-555-0123" email="john.doe@example.com"></contact-cell>
+          <br>
+          <contact-info-cell type="email" value="jane@example.com" clickable="true"></contact-info-cell>
         </div>
         
         <div class="form-example">
-          <h3>Input States</h3>
-          <div class="form-group">
-            <label>Normal Input</label>
-            <ui-input placeholder="Type something..."></ui-input>
+          <h4>Order ID Cells</h4>
+          <div style="margin-bottom: 1rem;">
+            <order-id-cell order-id="RO-001" status="in-progress" notification-count="3"></order-id-cell>
           </div>
-          <div class="form-group">
-            <label>Required Field</label>
-            <ui-input placeholder="Required field" required></ui-input>
-          </div>
-          <div class="form-group">
-            <label>Error State</label>
-            <ui-input placeholder="Invalid input" error value="wrong@"></ui-input>
-          </div>
-          <div class="form-group">
-            <label>Disabled Input</label>
-            <ui-input placeholder="Cannot edit" disabled value="Disabled"></ui-input>
-          </div>
+          <order-id-cell order-id="RO-002" status="completed"></order-id-cell>
         </div>
+        
+        <div class="form-example">
+          <h4>Status Cell</h4>
+          <status-cell status="pending"></status-cell>
+          <br><br>
+          <status-cell status="in-progress"></status-cell>
+          <br><br>
+          <status-cell status="completed"></status-cell>
+        </div>
+      </div>
+
+      <h3>🔸 Organisms (Complete UI Sections)</h3>
+      <div class="form-example">
+        <h4>Repair Orders Table</h4>
+        <repair-orders-table id="repairTable"></repair-orders-table>
+      </div>
+
+      <div class="code-block">
+&lt;!-- Molecules and Organisms --&gt;
+&lt;contact-cell name="John Doe" email="john@example.com"&gt;&lt;/contact-cell&gt;
+&lt;order-id-cell order-id="RO-001" notification-count="3"&gt;&lt;/order-id-cell&gt;
+&lt;repair-orders-table data="[...]"&gt;&lt;/repair-orders-table&gt;
       </div>
     </div>
 
@@ -327,8 +348,48 @@ import { UILibraryModule } from 'ui-library/angular';
     </div>
   </div>
 
-  <!-- This is the magic! Just one script tag - like Stripe or Google Maps -->
-  <script src="./ui-library.min.js"></script>
+  <!-- This is the magic! Just like Stripe or Google Maps -->
+  <link rel="stylesheet" href="./ui-library.css">
+  <script type="module" src="./index.js"></script>
+  <script type="module">
+    // Import and define all custom elements
+    import { 
+      defineCustomElementContactCell,
+      defineCustomElementContactInfoCell,
+      defineCustomElementDropdownCell,
+      defineCustomElementOrderIdCell,
+      defineCustomElementRepairOrdersTable,
+      defineCustomElementStatusBadge,
+      defineCustomElementStatusCell,
+      defineCustomElementStatusIcon,
+      defineCustomElementTableHeader,
+      defineCustomElementTableHeaderCell,
+      defineCustomElementTableRow,
+      defineCustomElementUiAvatar,
+      defineCustomElementUiIcon,
+      defineCustomElementUiText,
+      defineCustomElementMyComponent
+    } from './index.js';
+
+    // Define all custom elements
+    defineCustomElementContactCell();
+    defineCustomElementContactInfoCell();
+    defineCustomElementDropdownCell();
+    defineCustomElementOrderIdCell();
+    defineCustomElementRepairOrdersTable();
+    defineCustomElementStatusBadge();
+    defineCustomElementStatusCell();
+    defineCustomElementStatusIcon();
+    defineCustomElementTableHeader();
+    defineCustomElementTableHeaderCell();
+    defineCustomElementTableRow();
+    defineCustomElementUiAvatar();
+    defineCustomElementUiIcon();
+    defineCustomElementUiText();
+    defineCustomElementMyComponent();
+
+    console.log('✅ All UI Library components are now registered!');
+  </script>
 
   <!-- Optional: Add some interactivity -->
   <script>
@@ -337,6 +398,40 @@ import { UILibraryModule } from 'ui-library/angular';
     
     // Add click handlers to demonstrate interactivity
     document.addEventListener('DOMContentLoaded', function() {
+      // Initialize Repair Orders Table with sample data
+      const repairTable = document.getElementById('repairTable');
+      if (repairTable) {
+        const sampleData = [
+          {
+            orderId: 'RO-001',
+            customerName: 'John Doe',
+            phone: '+1-555-0123',
+            email: 'john.doe@example.com',
+            status: 'in-progress',
+            hasNotification: true
+          },
+          {
+            orderId: 'RO-002', 
+            customerName: 'Jane Smith',
+            phone: '+1-555-0456',
+            email: 'jane.smith@example.com',
+            status: 'completed',
+            hasNotification: false
+          },
+          {
+            orderId: 'RO-003',
+            customerName: 'Bob Johnson',
+            phone: '+1-555-0789',
+            email: 'bob.johnson@example.com',
+            status: 'pending',
+            hasNotification: true
+          }
+        ];
+        
+        repairTable.data = sampleData;
+      }
+      
+      // Add click handlers for interactive elements
       const buttons = document.querySelectorAll('ui-button');
       buttons.forEach(button => {
         button.addEventListener('click', function() {
@@ -354,21 +449,26 @@ import { UILibraryModule } from 'ui-library/angular';
         });
       });
       
-      // Example: Form validation
-      const inputs = document.querySelectorAll('ui-input[required]');
-      inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-          if (!this.value.trim()) {
-            this.setAttribute('error', 'true');
-          } else {
-            this.removeAttribute('error');
-          }
+      // Add click handlers for contact cells
+      const contactCells = document.querySelectorAll('contact-cell, contact-info-cell');
+      contactCells.forEach(cell => {
+        cell.addEventListener('contactClick', function(event) {
+          console.log('Contact clicked:', event.detail);
+          alert('Contact clicked: ' + event.detail);
         });
         
-        input.addEventListener('input', function() {
-          if (this.hasAttribute('error') && this.value.trim()) {
-            this.removeAttribute('error');
-          }
+        cell.addEventListener('infoClick', function(event) {
+          console.log('Info clicked:', event.detail);
+          alert('Info clicked: ' + JSON.stringify(event.detail));
+        });
+      });
+      
+      // Add click handlers for order cells
+      const orderCells = document.querySelectorAll('order-id-cell');
+      orderCells.forEach(cell => {
+        cell.addEventListener('orderClick', function(event) {
+          console.log('Order clicked:', event.detail);
+          alert('Order ID clicked: ' + event.detail);
         });
       });
     });
