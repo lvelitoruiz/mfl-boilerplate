@@ -1,0 +1,54 @@
+status-icon {
+  --status-positive: var(--ui-color-positive, #18811d);
+  --status-neutral: var(--ui-color-neutral, #297cd6);
+  --status-warning: var(--ui-color-warning, #ffa000);
+  --status-critical: var(--ui-color-critical, #911a08);
+  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-dot {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.status-icon--sm .status-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.status-icon--md .status-dot {
+  width: 8px;
+  height: 8px;
+}
+
+.status-icon--lg .status-dot {
+  width: 10px;
+  height: 10px;
+}
+
+/* Color variants */
+.status-icon--positive .status-dot {
+  background-color: var(--status-positive);
+}
+
+.status-icon--neutral .status-dot {
+  background-color: var(--status-neutral);
+}
+
+.status-icon--warning .status-dot {
+  background-color: var(--status-warning);
+}
+
+.status-icon--critical .status-dot {
+  background-color: var(--status-critical);
+}

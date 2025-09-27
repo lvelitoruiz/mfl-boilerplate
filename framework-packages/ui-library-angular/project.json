@@ -1,0 +1,24 @@
+{
+  "name": "ui-library-angular",
+  "sourceRoot": "framework-packages/ui-library-angular",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'Angular wrapper - no build needed'"
+      },
+      "dependsOn": ["ui-library:build"]
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "framework-packages/ui-library-angular"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": ["type:library", "scope:framework", "framework:angular"],
+  "implicitDependencies": ["ui-library"]
+}

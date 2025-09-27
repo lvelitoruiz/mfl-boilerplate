@@ -1,0 +1,24 @@
+{
+  "name": "ui-library-react",
+  "sourceRoot": "framework-packages/ui-library-react",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'TypeScript definitions - no build needed'"
+      },
+      "dependsOn": ["ui-library:build"]
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "framework-packages/ui-library-react"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": ["type:library", "scope:framework", "framework:react"],
+  "implicitDependencies": ["ui-library"]
+}

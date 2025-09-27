@@ -1,0 +1,17 @@
+status-cell {
+  display: block;
+  padding: 16px 12px;
+  min-width: 80px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.status-cell {
+  width: 100%;
+}
+
+.status-cell__content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ui-library-vue",
+  "sourceRoot": "framework-packages/ui-library-vue",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'TypeScript definitions - no build needed'"
+      },
+      "dependsOn": ["ui-library:build"]
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm publish",
+        "cwd": "framework-packages/ui-library-vue"
+      },
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": ["type:library", "scope:framework", "framework:vue"],
+  "implicitDependencies": ["ui-library"]
+}
